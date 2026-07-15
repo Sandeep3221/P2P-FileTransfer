@@ -41,13 +41,6 @@ export class WebRTCPeer {
     const stunUrl =
       process.env.NEXT_PUBLIC_STUN_URL ||
       "stun:stun.l.google.com:19302";
-      
-
-    const turnUsername =
-      process.env.NEXT_PUBLIC_TURN_USERNAME;
-
-    const turnPassword =
-      process.env.NEXT_PUBLIC_TURN_PASSWORD;
 
     const iceServers: RTCIceServer[] = [
       {
@@ -55,21 +48,7 @@ export class WebRTCPeer {
       },
     ];
 
-if (
-  turnUsername &&
-  turnPassword
-) {
-  iceServers.push({
-    urls: [
-      "turn:global.relay.metered.ca:80",
-      "turn:global.relay.metered.ca:80?transport=tcp",
-      "turn:global.relay.metered.ca:443",
-      "turns:global.relay.metered.ca:443?transport=tcp",
-    ],
-    username: turnUsername,
-    credential: turnPassword,
-  });
-}
+
 
     console.log("[ICE SERVERS]", iceServers);
 
