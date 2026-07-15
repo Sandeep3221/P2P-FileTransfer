@@ -59,8 +59,8 @@ export class SignalingClient {
       return Promise.resolve();
     }
 
-    const wsUrl =
-      process.env.NEXT_PUBLIC_SIGNALING_WS_URL;
+    const wsUrl = process.env.NEXT_PUBLIC_SIGNALING_WS_URL;
+    console.log("WS URL =", process.env.NEXT_PUBLIC_SIGNALING_WS_URL);
 
     if (!wsUrl) {
       return Promise.reject(
