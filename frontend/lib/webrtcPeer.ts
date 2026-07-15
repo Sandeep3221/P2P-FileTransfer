@@ -41,6 +41,7 @@ export class WebRTCPeer {
     const stunUrl =
       process.env.NEXT_PUBLIC_STUN_URL ||
       "stun:stun.l.google.com:19302";
+      
 
     const turnUsername =
       process.env.NEXT_PUBLIC_TURN_USERNAME;
@@ -203,9 +204,10 @@ if (
     this.dataChannel.onerror = (
       err
     ) => {
+      const rtcError = err as RTCErrorEvent;
       console.error(
         "[DATA CHANNEL ERROR]",
-        err
+        rtcError.error?.message || rtcError.error || "Unknown error"
       );
     };
 
