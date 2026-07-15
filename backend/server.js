@@ -31,6 +31,7 @@ const apiLimiter = rateLimit({
 app.use('/api/', apiLimiter);
 
 // API Routes
+app.get('/', (req, res) => res.send('Backend is working'));
 app.get('/api/config', configController.getConfig);
 
 // WebSocket setup
